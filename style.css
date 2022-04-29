@@ -1,0 +1,97 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap");
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  width: 100%;
+  font-family: "Inter", sans-serif;
+}
+.container {
+  display: flex;
+  margin: 0 auto;
+  width: 80%;
+  height: auto;
+  background-color: rgb(226, 226, 226);
+  font-size: 20px;
+}
+h1 {
+  text-align: center;
+}
+.left-container {
+  width: 50%;
+  height: auto;
+}
+.left-container p {
+  margin-left: 10px;
+  font-weight: bold;
+}
+.input-content {
+  display: flex;
+  justify-content: space-between;
+}
+.add-members {
+  margin-right: 5px;
+  width: 60%;
+}
+input {
+  background-color: #7550fe;
+  border: none;
+  padding: 10px 20px;
+  color: white;
+  border-radius: 5px;
+}
+input::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: rgb(201, 201, 201);
+  opacity: 1; /* Firefox */
+}
+.namesLi {
+  border-bottom: 1px solid rgb(182, 182, 182);
+  padding: 8px 8px;
+}
+#name {
+  width: 270px;
+}
+#number {
+  width: 70px;
+}
+#reset {
+  background-color: rgb(173, 3, 3);
+}
+input[type="button"] {
+  cursor: pointer;
+}
+.right-container {
+  width: 50%;
+  height: 100%;
+
+  border-radius: 5px;
+  display: flex;
+}
+
+.teamOl {
+  flex-direction: column;
+  position: relative;
+  margin: auto;
+  width: 90%;
+  height: auto;
+
+  border-radius: 5px;
+  margin-bottom: 5px;
+  padding: 10px;
+  border: 1px solid rgb(182, 182, 182);
+  color: rgb(47, 47, 47);
+  font-weight: bold;
+  top: 40px;
+}
+.teamOl li {
+  border-bottom: 1px solid rgb(182, 182, 182);
+  padding: 8px 8px;
+  font-size: 20px;
+  list-style: none;
+  margin-left: 10px;
+  font-weight: normal;
+}
