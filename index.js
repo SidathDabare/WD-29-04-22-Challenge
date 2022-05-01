@@ -1,8 +1,20 @@
-let nameList = []; //list of naemes
+let nameList = [
+  "Sidath",
+  "Dabare",
+  "Simon",
+  "Farshad",
+  "Carloz",
+  "Ade",
+  "Tinko",
+  "Jhon",
+  "Eric",
+  "Stefano",
+  "Lidia",
+]; //list of naemes
+let currentTeam = 0;
+let newTeam = 0;
 let olList = document.querySelector("#nameList");
-// console.log(olList);
-// console.log(nameList);
-
+console.log(nameList.length);
 // get names------------
 function getNames() {
   let inputName = document.querySelector("#name");
@@ -11,7 +23,7 @@ function getNames() {
   createList();
 }
 //console.log(inputName.value);
-
+getNames();
 // display names-------------
 
 function createList() {
@@ -21,67 +33,76 @@ function createList() {
     console.log(name);
     let newLi = document.createElement("li");
     newLi.setAttribute("class", "namesLi");
-    newLi.innerText = name;
+
     olList.appendChild(newLi);
+    newLi.innerText = name;
   }
 }
 // createList();
 // Create teams-----------
+let teamsArr = [];
+
 function createTeam() {
   let teamDisplay = document.querySelector(".right-container");
   let inputNumbers = document.querySelector("#number").value;
   //console.log(inputNumbers);
   for (let i = 0; i < inputNumbers; i++) {
     let teams = inputNumbers[i];
-    teams = document.createElement("ol");
-    teams.setAttribute("class", "teamOl");
-    teams.innerText = "Team " + [i + 1];
+    teams = document.createElement("div");
+    teams.setAttribute("class", "teams");
+    teams.innerHTML = `<p>Team : ${[i + 1]}</p>`;
     teamDisplay.appendChild(teams);
+    teamsArr.push(teams);
+    console.log(teams);
   }
 }
-// get single name from list-------------------
-let names = document.querySelectorAll(".namesLi");
-//console.log(names);
-let newArr = [];
-console.log(newArr);
 
-function getSingleName() {
-  for (let index = 0; index < names.length; index++) {
-    let singleName = names[index].innerText;
-    newArr.push(singleName);
-    // names[1].innerText = "";
-    //console.log(e);
-  }
-  //return singleName;
-}
-getSingleName();
+// get number input value--
+// let newArr = [];
+// let inputNumbers = document.querySelector("#number");
+// let eachTeam = 0;
+// inputNumbers.addEventListener("input", function (e) {
+//   eachTeam = Math.floor(newArr.length / e.target.value);
+//   //console.log(eachTeam);
+// });
 
 // assign names----------------------
-let inputNumbers = document.querySelector("#number");
-// get number input value--
-let eachTeam = 0;
-inputNumbers.addEventListener("input", function (e) {
-  eachTeam = Math.ceil(newArr.length / e.target.value);
-  console.log(eachTeam);
-});
-
+let count = 1;
+//newTeam = document.querySelector(`.teams:nth-child(${count})`);
 function assignName() {
-  let teamOl = document.querySelector(".teamOl");
-  //console.log(teamOl);
-  if (inputNumbers.value == 0) {
-    alert("Please add number");
-  } else if (eachTeam) {
-    //getSingleName();
-    for (let i = 0; i < eachTeam; i++) {
-      let singleName = newArr[i];
-      console.log(singleName);
-      let createLi = document.createElement("li");
-      createLi.innerText = singleName;
-      eachTeam = createLi;
-      teamOl.appendChild(createLi);
-    }
+  let teamCount = document.querySelectorAll(".teams").length;
+  console.log(teamCount);
+
+  //while (nameList.length > 0) {
+  if (teamCount > 0 || teamCount % count === 0) {
+    let randomName = nameList[Math.floor(Math.random() * nameList.length)];
+    nameList = nameList.filter((name) => name !== randomName);
+    let newTeam = document.querySelector(`.teams:nth-child(${count})`);
+    let createNode = document.createElement("p");
+    createNode.innerText = randomName;
+    newTeam.appendChild(createNode);
+    count += 1;
+    return;
+    //teamsArr[count].push(newTeam);
+  } else if (teamCount.length < 0) {
+    alert("All names assigned");
+  } else {
+    count = 1;
+    let randomName = nameList[Math.floor(Math.random() * nameList.length)];
+    nameList = nameList.filter((name) => name !== randomName);
+    let newTeam = document.querySelector(
+      `.teams:nth-child(${count % teamCount})`
+    );
+    let createNode = document.createElement("p");
+    createNode.innerText = randomName;
+    newTeam.appendChild(createNode);
+    count += 1;
   }
 }
+
+//}
+// }
+
 // Reset page - clear all---------------------
 function resetData() {
   window.location.reload(true);
