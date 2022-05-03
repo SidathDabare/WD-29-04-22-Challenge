@@ -74,7 +74,20 @@ function assignName() {
   console.log(teamCount);
 
   //while (nameList.length > 0) {
-  if (teamCount > 0 || teamCount % count === 0) {
+  if (teamCount > 0) {
+    // let randomName = nameList[Math.floor(Math.random() * nameList.length)];
+    // nameList = nameList.filter((name) => name !== randomName);
+    // let newTeam = document.querySelector(`.teams:nth-child(${count})`);
+    // let createNode = document.createElement("p");
+    // createNode.innerText = randomName;
+    // newTeam.appendChild(createNode);
+    // count += 1;
+    // return;
+    //teamsArr[count].push(newTeam);
+
+    if (teamCount === count) {
+      count = 1;
+    }
     let randomName = nameList[Math.floor(Math.random() * nameList.length)];
     nameList = nameList.filter((name) => name !== randomName);
     let newTeam = document.querySelector(`.teams:nth-child(${count})`);
@@ -82,21 +95,9 @@ function assignName() {
     createNode.innerText = randomName;
     newTeam.appendChild(createNode);
     count += 1;
-    return;
-    //teamsArr[count].push(newTeam);
-  } else if (teamCount.length < 0) {
-    alert("All names assigned");
   } else {
-    count = 1;
-    let randomName = nameList[Math.floor(Math.random() * nameList.length)];
-    nameList = nameList.filter((name) => name !== randomName);
-    let newTeam = document.querySelector(
-      `.teams:nth-child(${count % teamCount})`
-    );
-    let createNode = document.createElement("p");
-    createNode.innerText = randomName;
-    newTeam.appendChild(createNode);
-    count += 1;
+    count--;
+    alert("finish");
   }
 }
 
@@ -107,3 +108,14 @@ function assignName() {
 function resetData() {
   window.location.reload(true);
 }
+
+// function reset() {
+//   inputName.value = "";
+//   teamsNum.value = 2;
+//   mainList.innerHTML = "";
+//   teamsContainer.innerHTML = "";
+
+//   for (let i = 0; i < 2; i++) {
+//     createTeam(i + 1);
+//   }
+// }
